@@ -25,7 +25,7 @@
 
   $TCA['pages']['columns']['module']['config']['items'][] =
      array('T3 fancybox', 't3fancybox', t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif' );
-  t3lib_SpriteManager::addTcaTypeIcon( 'pages', 'contains-t3gfancybox', '../typo3conf/ext/' . $_EXTKEY . ' /ext_icon.gif');
+  t3lib_SpriteManager::addTcaTypeIcon( 'pages', 'contains-t3fancybox', '../typo3conf/ext/' . $_EXTKEY . ' /ext_icon.gif');
     // Add pagetree icon
 
 ?>
