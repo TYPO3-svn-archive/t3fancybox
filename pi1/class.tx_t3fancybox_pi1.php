@@ -25,16 +25,16 @@
 // require_once(PATH_tslib . 'class.tslib_pibase.php');
 
 /**
- * Plugin '' for the 'test' extension.
+ * Plugin '' for the 't3fancybox' extension.
  *
  * @author	Dirk Wildt <wildt@die-netzmacher.de>
  * @package	TYPO3
- * @subpackage	tx_test
+ * @subpackage	tx_t3fancybox
  */
-class tx_test_pi1 extends tslib_pibase {
-	public $prefixId      = 'tx_test_pi1';		// Same as class name
-	public $scriptRelPath = 'pi1/class.tx_test_pi1.php';	// Path to this script relative to the extension dir.
-	public $extKey        = 'test';	// The extension key.
+class tx_t3fancybox_pi1 extends tslib_pibase {
+	public $prefixId      = 'tx_t3fancybox_pi1';		// Same as class name
+	public $scriptRelPath = 'pi1/class.tx_t3fancybox_pi1.php';	// Path to this script relative to the extension dir.
+	public $extKey        = 't3fancybox';	// The extension key.
 	public $pi_checkCHash = TRUE;
 	
 	/**
@@ -53,8 +53,8 @@ class tx_test_pi1 extends tslib_pibase {
 
 
 
-if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/test/pi1/class.tx_test_pi1.php'])) {
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/test/pi1/class.tx_test_pi1.php']);
+if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3fancybox/pi1/class.tx_t3fancybox_pi1.php'])) {
+	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3fancybox/pi1/class.tx_t3fancybox_pi1.php']);
 }
 
 ?>

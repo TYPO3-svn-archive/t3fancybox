@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************
- * Extension Manager/Repository config file for ext "test".
+ * Extension Manager/Repository config file for ext "t3fancybox".
  *
  * Auto generated 10-02-2013 19:57
  *
@@ -11,11 +11,12 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'test',
+	'title' => 'T3 fancybox',
 	'description' => '',
 	'category' => 'plugin',
-	'author' => 'Dirk Wildt',
-	'author_email' => 'wildt@die-netzmacher.de',
+	'author' => 'Dirk Wildt (Die Netzmacher)',
+	'author_email' => 'http://wildt.at.die-netzmacher.de',
+	'author_company' => '',
 	'shy' => '',
 	'dependencies' => '',
 	'conflicts' => '',
@@ -28,8 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'author_company' => '',
-	'version' => '0.0.0',
+	'version' => '0.0.1',
 	'constraints' => array(
 		'depends' => array(
 		),
@@ -38,7 +38,6 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:9:{s:9:"ChangeLog";s:4:"3c77";s:12:"ext_icon.gif";s:4:"1bdc";s:17:"ext_localconf.php";s:4:"b65c";s:14:"ext_tables.php";s:4:"8aa8";s:16:"locallang_db.xml";s:4:"b915";s:10:"README.txt";s:4:"ee2d";s:19:"doc/wizard_form.dat";s:4:"effd";s:20:"doc/wizard_form.html";s:4:"7277";s:25:"pi1/class.tx_test_pi1.php";s:4:"a464";}',
 );
 
 ?>
