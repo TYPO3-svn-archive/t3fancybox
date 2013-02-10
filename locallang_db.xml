@@ -6,7 +6,7 @@
     </meta>
     <data type="array">
         <languageKey index="default" type="array">
-            <label index="tt_content.fancyboxWithImages">Fancybox by Thumbnails</label>
+            <label index="tt_content.t3fancybox_pi1">Fancybox by Thumbnails</label>
         </languageKey>
     </data>
 </T3locallang>

@@ -10,7 +10,7 @@ $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] = '--palette--;LLL:EX
 
 t3lib_extMgm::addPlugin( 
   array (
-    'LLL:EXT:t3fancybox/locallang_db.xml:tt_content.' . $_EXTKEY . '._pi1',
+    'LLL:EXT:t3fancybox/locallang_db.xml:tt_content.' . $_EXTKEY . '_pi1',
     $_EXTKEY,
     t3lib_extMgm::extRelPath( $_EXTKEY ) . 'ext_icon.gif'
   ),
