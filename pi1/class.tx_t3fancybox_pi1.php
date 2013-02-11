@@ -91,6 +91,40 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     }
     
     $arrImgLinks = explode( PHP_EOL, $imgLinks );
+    foreach( $arrImgLinks as $key => $value )
+    {
+        // get the first part of a typo3 link. Example: 3273#2849 myTarget myClass "myTitle"
+      list( $href ) = explode( ' ', $value );
+      list( $pid, $anchor ) = explode( '#', $href );
+      
+      switch( true )
+      {
+        case( $pid != $GLOBALS['TSFE']->id ):
+            // RETURN : Link isn't a link within the current page
+            // :TODO: DRS prompt
+          return;
+          break;
+        case( empty( $anchor ) ):
+            // RETURN : Link isn't a link to a content element within the current page
+            // :TODO: DRS prompt
+          return;
+          break;
+      }
+    }
+    $jss = '<script type="text/javascript">
+  $('#c2849, #c2850').wrap('<div style="display:none;" />');
+  //$('#c2852 img,').wrap('<div style="color:green;" />');
+  $('#c2852 img, #c2852 .csc-textpic-caption').wrap('<a class="c2581" data-fancybox-group="c2581" title="Wildt" href="#c2849">');
+  $(document).ready(function() {
+    $('a.c2581').fancybox({
+      'overlayOpacity' : '0.2',
+      'speedIn'    : '1000',
+      'speedOut'   : '200',    
+      'transitionIn'    : 'elastic',
+      'transitionOut'   : 'elastic'    
+    });
+  });
+</script>';
     
     $jss = var_export( $arrImgLinks, true );
     
