@@ -124,7 +124,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $csvAnchors = implode( ', ', $anchors );
     
       // Hide content, which are the target of the links
-    $jss = $jss . '$("' . $csvAnchors . '").wrap(\'<div style="display:none;" />\')' . PHP_EOL;
+    $jss = $jss . '$("' . $csvAnchors . '").wrap(\'<div style="display:none;" />\');' . PHP_EOL;
     
     $uid      = $this->cObj->data['uid'];
     $selector = '$(\'#c' . $uid . ' img, #c' . $uid . ' .csc-textpic-caption\')';
@@ -140,8 +140,8 @@ class tx_t3fancybox_pi1 extends tslib_pibase
       $wraps[] = 'wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="#c2849">\')';
     }
     
-    $wrap = implode( PHP_EOL . $selector . '.', ( array ) $wraps );
-    $wrap = $selector . '.' . $wrap. PHP_EOL;
+    $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
+    $wrap = $selector . '.' . $wrap. ';' . PHP_EOL;
     
     $jss = $jss . $wrap;
 
