@@ -73,7 +73,6 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $this->cObjData( );
 
     $content = $this->content( );
-    return $content;
     return $content . $jss;
 
 //    return 'Hello World!<hr />
@@ -98,6 +97,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     }
       // RETURN : There isn't any link
 
+    $files      = explode( PHP_EOL, $this->cObj->data['images'] );
     $typo3links = explode( PHP_EOL, $this->cObj->data['image_link'] );
     $captions   = explode( PHP_EOL, $this->cObj->data['imagecaption'] );
     
@@ -137,13 +137,14 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     
     foreach( ( array ) $anchors as $key => $anchor )
     {
-      $selector = '$(\'#c' . $uid . ':nth-child( ' . ( $key + 1 ) . ' ) img, #c' . $uid . ':nth-child( ' . ( $key + 1 ) . ' ) .csc-textpic-caption\')';
+      $file     = $files[$key];
+      $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']"';
       $title = null;
       if( $captions[$key] )
       {
         $title = 'title="' . trim( $captions[$key] ) . '"';
       }
-      $wraps[] = $selector . '.wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
+      $wraps[] = $selector . '.parent( ).wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
     }
     
 //    $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
