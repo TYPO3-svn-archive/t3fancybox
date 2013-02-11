@@ -64,6 +64,11 @@ class tx_t3fancybox_pi1 extends tslib_pibase
 
       // Set JavaScript code
     $jss = $this->jss( );
+    
+    if( empty ( $jss ) )
+    {
+      return;
+    }
       // Handle cObj->data
     $this->cObjData( );
 
