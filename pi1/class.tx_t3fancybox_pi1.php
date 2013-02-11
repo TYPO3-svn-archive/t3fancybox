@@ -138,7 +138,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     foreach( ( array ) $anchors as $key => $anchor )
     {
       $file     = trim( $files[$key] );
-      $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']"';
+      $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']")';
       $title = null;
       if( $captions[$key] )
       {
