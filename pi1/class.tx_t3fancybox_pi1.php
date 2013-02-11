@@ -2,7 +2,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Dirk Wildt <wildt@die-netzmacher.de>
+ *  (c) 2013 Dirk Wildt <http://wildt.at.die-netzmacher.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,7 +27,7 @@
 /**
  * Plugin '' for the 't3fancybox' extension.
  *
- * @author	Dirk Wildt <wildt@die-netzmacher.de>
+ * @author	Dirk Wildt <http://wildt.at.die-netzmacher.de>
  * @package	TYPO3
  * @subpackage	tx_t3fancybox
  */
@@ -35,7 +35,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase {
 	public $prefixId      = 'tx_t3fancybox_pi1';		// Same as class name
 	public $scriptRelPath = 'pi1/class.tx_t3fancybox_pi1.php';	// Path to this script relative to the extension dir.
 	public $extKey        = 't3fancybox';	// The extension key.
-	public $pi_checkCHash = TRUE;
+	public $pi_checkCHash = true;
 	
 	/**
 	 * The main method of the Plugin.
@@ -44,17 +44,23 @@ class tx_t3fancybox_pi1 extends tslib_pibase {
 	 * @param array $conf The Plugin configuration
 	 * @return string The content that is displayed on the website
 	 */
-	public function main($content, array $conf) {
-		return 'Hello World!<hr />
-			Here is the TypoScript passed to the method:' .
-					var_export($conf, true);
+	public function main( $content, array $conf )
+        {
+          $cObj_name  = $conf['content'];
+          $cObj_conf  = $conf['content.'];
+          $content    = $this->cObj->cObjGetSingle( $cObj_name, $cObj_conf );
+          return $content;
+
+          return 'Hello World!<hr />
+                  Here is the TypoScript passed to the method:' .
+                  var_export($conf, true);
 	}
 }
 
 
 
 if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3fancybox/pi1/class.tx_t3fancybox_pi1.php'])) {
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3fancybox/pi1/class.tx_t3fancybox_pi1.php']);
+  include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/t3fancybox/pi1/class.tx_t3fancybox_pi1.php']);
 }
 
 ?>
