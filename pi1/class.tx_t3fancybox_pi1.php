@@ -68,7 +68,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $this->cObjData( );
 
     $content = $this->content( );
-    return $jss . $content;
+    return $content . $jss;
 
 //    return 'Hello World!<hr />
 //            Here is the TypoScript passed to the method:' .
