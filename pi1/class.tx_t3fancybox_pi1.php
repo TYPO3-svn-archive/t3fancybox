@@ -116,7 +116,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
           continue 2;
           break;
       }
-      $anchor         = '#' . trim( $anchor );
+      $anchor         = '#c' . trim( $anchor );
       $anchors[$key]  = $anchor; 
       unset( $pid );
     }
