@@ -156,11 +156,17 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     
     $jss = $jss . $wrap;
 
-    $fancybox = '
+    $fancybox = "
 $(document).ready(function() {
-    $(\'a.c' . $uid . '\').fancybox( );
+    $('a.c" . $uid . "').fancybox({
+      'overlayOpacity' : '0.2',
+      'speedIn'    : '1000',
+      'speedOut'   : '200',    
+      'transitionIn'    : 'elastic',
+      'transitionOut'   : 'elastic'
+    });
 });
-';
+";
 //  $('#c2852 img, #c2852 .csc-textpic-caption').wrap('<a class="c2581" data-fancybox-group="c2581" title="Wildt" href="#c2849">');
 //  $(document).ready(function() {
 //    $('a.c2581').fancybox({
