@@ -73,6 +73,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $this->cObjData( );
 
     $content = $this->content( );
+    return $content;
     return $content . $jss;
 
 //    return 'Hello World!<hr />
