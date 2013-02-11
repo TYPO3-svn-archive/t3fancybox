@@ -48,8 +48,9 @@ class tx_t3fancybox_pi1 extends tslib_pibase {
         {
           $cObj_name  = $conf['content'];
           $cObj_conf  = $conf['content.'];
+          //$cObjData   = '<pre>' . var_export( $this->cObj->data, true ) . '</pre>';
+          unset( $this->cObj->data['image_link'] );
           $content    = $this->cObj->cObjGetSingle( $cObj_name, $cObj_conf );
-          $cObjData   = '<pre>' . var_export( $this->cObj->data, true ) . '</pre>';
           return $cObjData . $content;
 
           return 'Hello World!<hr />
