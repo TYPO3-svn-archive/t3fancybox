@@ -146,7 +146,9 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $jss = $jss . $wrap;
 
     $fancybox = '
+$(document).ready(function() {
     $(\'a.c' . $uid . '\').fancybox( );
+});
 ';
 //  $('#c2852 img, #c2852 .csc-textpic-caption').wrap('<a class="c2581" data-fancybox-group="c2581" title="Wildt" href="#c2849">');
 //  $(document).ready(function() {
@@ -163,9 +165,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
 
     $jss = '
 <script type="text/javascript">
-$(document).ready(function() {
 ' . $jss . '       
-});
 </script>' . PHP_EOL;
     
 //    $jss = var_export( $arrImgLinks, true );
