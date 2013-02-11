@@ -144,7 +144,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
         $title = 'title="' . trim( $captions[$key] ) . '"';
       }
       $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']")';
-      $wraps[] = $selector . ".attr('id', 'c" . $uid . "-img-" . ( $key + 1 ) . ");";
+      $wraps[] = $selector . ".attr('id', 'c" . $uid . "-img-" . ( $key + 1 ) . "');";
       $selector = '$("#c' . $uid . '-img-' . ( $key + 1 ) . '")';
       $wraps[] = $selector . '.parent( ).wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
     }
