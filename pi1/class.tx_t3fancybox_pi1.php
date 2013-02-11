@@ -142,7 +142,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
       {
         $title = 'title="' . trim( $captions[$key] ) . '"';
       }
-      $wraps[] = 'wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="#c2849">\')';
+      $wraps[] = 'wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
     }
     
     $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
