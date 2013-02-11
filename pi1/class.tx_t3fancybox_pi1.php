@@ -82,51 +82,92 @@ class tx_t3fancybox_pi1 extends tslib_pibase
   */
   private function jss( )
   {
-    $jss = null;
+    $jss      = null;
+    $anchors  = null;
     
-    $imgLinks = $this->cObj->data['image_link'];
-    if( empty( $imgLinks ) )
+      // RETURN : There isn't any link
+    if( empty( $this->cObj->data['image_link'] ) )
     {
       return;
     }
+      // RETURN : There isn't any link
+
+    $typo3links = explode( PHP_EOL, $this->cObj->data['image_link'] );
+    $captions   = explode( PHP_EOL, $this->cObj->data['imagecaption'] );
     
-    $arrImgLinks = explode( PHP_EOL, $imgLinks );
-    foreach( $arrImgLinks as $key => $value )
+    
+    
+    foreach( $typo3links as $key => $typo3link )
     {
         // get the first part of a typo3 link. Example: 3273#2849 myTarget myClass "myTitle"
-      list( $href ) = explode( ' ', $value );
+      list( $href ) = explode( ' ', $typo3link );
       list( $pid, $anchor ) = explode( '#', $href );
       
       switch( true )
       {
         case( $pid != $GLOBALS['TSFE']->id ):
-            // RETURN : Link isn't a link within the current page
+            // CONTINUE : Link isn't a link within the current page
             // :TODO: DRS prompt
-          return;
+          continue 2;
           break;
         case( empty( $anchor ) ):
-            // RETURN : Link isn't a link to a content element within the current page
+            // CONTINUE : Link isn't a link to a content element within the current page
             // :TODO: DRS prompt
-          return;
+          continue 2;
           break;
       }
+      $anchor         = '#' . $anchor;
+      $anchors[$key]  = $anchor; 
+      unset( $pid );
     }
-    $jss = '<script type="text/javascript">
-  $('#c2849, #c2850').wrap('<div style="display:none;" />');
-  //$('#c2852 img,').wrap('<div style="color:green;" />');
-  $('#c2852 img, #c2852 .csc-textpic-caption').wrap('<a class="c2581" data-fancybox-group="c2581" title="Wildt" href="#c2849">');
+    
+    $csvAnchors = implode( ',', $anchors );
+    
+      // Hide content, which are the target of the links
+    $jss = $jss . '$("' . $csvAnchors . '").wrap(\'<div style="display:none;" />\')' . PHP_EOL;
+    
+    $uid      = $this->cObj->data['uid'];
+    $selector = '$(\'#c' . $uid . ' img, #c' . $uid . ' .csc-textpic-caption\')';
+    $wraps    = null;
+    
+    foreach( ( array ) $anchors as $key => $anchor )
+    {
+      $title = null;
+      if( $captions[$key] )
+      {
+        $title = 'title="' . $captions[$key] . '"';
+      }
+      $wraps[] = 'wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="#c2849">\')';
+    }
+    
+    $wrap = implode( PHP_EOL . $selector . '.', ( array ) $wraps );
+    $wrap = $selector . '.' . $wrap. PHP_EOL;
+    
+    $jss = $jss . $wrap;
+
+    $fancybox = '
   $(document).ready(function() {
-    $('a.c2581').fancybox({
-      'overlayOpacity' : '0.2',
-      'speedIn'    : '1000',
-      'speedOut'   : '200',    
-      'transitionIn'    : 'elastic',
-      'transitionOut'   : 'elastic'    
-    });
+    $(\'a.c' . $uid . '\').fancybox( );
   });
+';
+//  $('#c2852 img, #c2852 .csc-textpic-caption').wrap('<a class="c2581" data-fancybox-group="c2581" title="Wildt" href="#c2849">');
+//  $(document).ready(function() {
+//    $('a.c2581').fancybox({
+//      'overlayOpacity' : '0.2',
+//      'speedIn'    : '1000',
+//      'speedOut'   : '200',    
+//      'transitionIn'    : 'elastic',
+//      'transitionOut'   : 'elastic'    
+//    });
+//  });
+
+    $jss = $jss . $fancybox;
+
+    $jss = '<script type="text/javascript">
+  ' . $jss . '       
 </script>';
     
-    $jss = var_export( $arrImgLinks, true );
+//    $jss = var_export( $arrImgLinks, true );
     
     return $jss;
     
