@@ -1,0 +1,4 @@
+
+plugin.tx_t3fancybox_pi1 {
+  content < tt_content.image.20
+}
