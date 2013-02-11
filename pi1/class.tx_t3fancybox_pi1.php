@@ -121,7 +121,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
       unset( $pid );
     }
     
-    $csvAnchors = implode( ',', $anchors );
+    $csvAnchors = implode( ', ', $anchors );
     
       // Hide content, which are the target of the links
     $jss = $jss . '$("' . $csvAnchors . '").wrap(\'<div style="display:none;" />\')' . PHP_EOL;
@@ -135,7 +135,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
       $title = null;
       if( $captions[$key] )
       {
-        $title = 'title="' . $captions[$key] . '"';
+        $title = 'title="' . trim( $captions[$key] ) . '"';
       }
       $wraps[] = 'wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="#c2849">\')';
     }
@@ -166,7 +166,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $jss = '
 <script type="text/javascript">
 ' . $jss . '       
-</script>';
+</script>' . PHP_EOL;
     
 //    $jss = var_export( $arrImgLinks, true );
     
