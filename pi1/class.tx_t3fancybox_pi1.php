@@ -136,7 +136,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     
     foreach( ( array ) $anchors as $key => $anchor )
     {
-      $selector = '$(\'#c' . $uid . ' img:nth-child( ' . ( $key + 1 ) . ' ), #c' . $uid . ' .csc-textpic-caption\')';
+      $selector = '$(\'#c' . $uid . ' img:nth-child( ' . ( $key + 1 ) . ' ), #c' . $uid . ' .csc-textpic-caption:nth-child( ' . ( $key + 1 ) . ' )\')';
       $title = null;
       if( $captions[$key] )
       {
