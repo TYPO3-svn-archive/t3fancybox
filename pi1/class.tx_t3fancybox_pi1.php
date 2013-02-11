@@ -116,7 +116,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
           continue 2;
           break;
       }
-      $anchor         = '#' . $anchor;
+      $anchor         = '#' . trim( $anchor );
       $anchors[$key]  = $anchor; 
       unset( $pid );
     }
@@ -163,8 +163,9 @@ class tx_t3fancybox_pi1 extends tslib_pibase
 
     $jss = $jss . $fancybox;
 
-    $jss = '<script type="text/javascript">
-  ' . $jss . '       
+    $jss = '
+<script type="text/javascript">
+' . $jss . '       
 </script>';
     
 //    $jss = var_export( $arrImgLinks, true );
