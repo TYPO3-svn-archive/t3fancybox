@@ -146,13 +146,13 @@ class tx_t3fancybox_pi1 extends tslib_pibase
       $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']")';
       $wraps[] = $selector . ".attr('id', 'c" . $uid . "-img-" . ( $key + 1 ) . "');";
       $selector = '$("#c' . $uid . '-img-' . ( $key + 1 ) . '")';
-      $wraps[] = $selector . '.parent( ).wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
+      $wraps[] = $selector . '.parent( ).wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\');';
     }
     
 //    $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
 //    $wrap = $selector . '.' . $wrap. ';' . PHP_EOL;
-    $wrap = implode( ';' . PHP_EOL, ( array ) $wraps );
-    $wrap = $wrap. ';' . PHP_EOL;
+    $wrap = implode( PHP_EOL, ( array ) $wraps );
+    $wrap = $wrap. PHP_EOL;
     
     $jss = $jss . $wrap;
 
