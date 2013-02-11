@@ -132,21 +132,23 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $jss = $jss . '$("' . $csvAnchors . '").wrap(\'<div style="display:none;" />\');' . PHP_EOL;
     
     $uid      = $this->cObj->data['uid'];
-    $selector = '$(\'#c' . $uid . ' img, #c' . $uid . ' .csc-textpic-caption\')';
     $wraps    = null;
     
     foreach( ( array ) $anchors as $key => $anchor )
     {
+      $selector = '$(\'#c' . $uid . ' img:nth-child( ' . $key. ' ), #c' . $uid . ' .csc-textpic-caption\')';
       $title = null;
       if( $captions[$key] )
       {
         $title = 'title="' . trim( $captions[$key] ) . '"';
       }
-      $wraps[] = 'wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
+      $wraps[] = $selector . '.wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\')';
     }
     
-    $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
-    $wrap = $selector . '.' . $wrap. ';' . PHP_EOL;
+//    $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
+//    $wrap = $selector . '.' . $wrap. ';' . PHP_EOL;
+    $wrap = implode( ';' . PHP_EOL, ( array ) $wraps );
+    $wrap = $wrap. ';' . PHP_EOL;
     
     $jss = $jss . $wrap;
 
