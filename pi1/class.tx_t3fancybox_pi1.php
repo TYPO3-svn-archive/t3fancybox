@@ -97,7 +97,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     }
       // RETURN : There isn't any link
 
-    $files      = explode( ',', $this->cObj->data['images'] );
+    $files      = explode( ',', $this->cObj->data['image'] );
     $typo3links = explode( PHP_EOL, $this->cObj->data['image_link'] );
     $captions   = explode( PHP_EOL, $this->cObj->data['imagecaption'] );
     
