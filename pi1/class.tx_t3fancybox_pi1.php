@@ -43,10 +43,10 @@ class tx_t3fancybox_pi1 extends tslib_pibase
   public $pi_checkCHash = true;
   
     // Current TypoSCript configuration
-  private $conf;
+  public $conf;
   
     // Current content
-  private $content ;
+  public $content ;
 
 
   
