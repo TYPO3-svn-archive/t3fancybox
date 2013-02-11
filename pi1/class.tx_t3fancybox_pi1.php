@@ -97,7 +97,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     }
       // RETURN : There isn't any link
 
-    $files      = explode( PHP_EOL, $this->cObj->data['images'] );
+    $files      = explode( ',', $this->cObj->data['images'] );
     $typo3links = explode( PHP_EOL, $this->cObj->data['image_link'] );
     $captions   = explode( PHP_EOL, $this->cObj->data['imagecaption'] );
     
@@ -137,7 +137,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     
     foreach( ( array ) $anchors as $key => $anchor )
     {
-      $file     = $files[$key];
+      $file     = trim( $files[$key] );
       $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']"';
       $title = null;
       if( $captions[$key] )
