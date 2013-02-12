@@ -140,7 +140,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     {
       if( $captions[$key] )
       {
-        $jssTitle[] = 'title[' . $key . ']="' . trim( $captions[$key] ) . '";';
+        $jssTitle[] = 'title[' . $key . ']=\' title="' . trim( $captions[$key] ) . '"\';';
       }
       $jssHref[] = 'href[' . $key . ']="' . trim( $anchor ) . '";';
     }
