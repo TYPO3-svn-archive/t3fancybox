@@ -146,9 +146,9 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     }
     
     $jssHrefArr = implode( PHP_EOL, ( array ) $jssHref );
-    $jssHrefArr = 'href = new Array( );' . PHP_EOL . $jssHref;
+    $jssHrefArr = 'href = new Array( );' . PHP_EOL . $jssHrefArr;
     $jssTitleArr = implode( PHP_EOL, ( array ) $jssTitle );
-    $jssTitleArr = 'title = new Array( );' . PHP_EOL . $jssTitle;
+    $jssTitleArr = 'title = new Array( );' . PHP_EOL . $jssTitleArr;
     
     $fancybox = "
 $(document).ready(function() {
