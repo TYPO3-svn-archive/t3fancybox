@@ -156,12 +156,11 @@ $(document).ready(function() {
 " . $jssTitleArr . "
     $('#c" . $uid . " figure').each(
       function( i ) {
-        var inc = i + 1;
-        if( ! href[inc] )
+        if( ! href[i] )
         {
           return;
         }
-        $(this).wrap('<a class=\"c" . $uid . "\" data-fancybox-group=\"c" . $uid . "\"' + title[inc] + '\" href=\"' + href[inc] + '\">');
+        $(this).wrap('<a class=\"c" . $uid . "\" data-fancybox-group=\"c" . $uid . "\"' + title[i] + '\" href=\"' + href[i] + '\">');
       }
     );
     $('a.c" . $uid . "').fancybox({
