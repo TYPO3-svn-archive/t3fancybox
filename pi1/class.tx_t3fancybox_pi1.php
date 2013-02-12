@@ -70,7 +70,7 @@ class tx_t3fancybox_pi1 extends tslib_pibase
       return;
     }
       // Handle cObj->data
-    $this->cObjData( );
+    //$this->cObjData( );
 
     $content = $this->content( );
     return $content . $jss;
@@ -100,6 +100,8 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $typo3links = explode( PHP_EOL, $this->cObj->data['image_link'] );
     $captions   = explode( PHP_EOL, $this->cObj->data['imagecaption'] );
     
+    $newTypo3Links = null;
+    
     
     
     foreach( $typo3links as $key => $typo3link )
@@ -113,18 +115,24 @@ class tx_t3fancybox_pi1 extends tslib_pibase
         case( $pid != $GLOBALS['TSFE']->id ):
             // CONTINUE : Link isn't a link within the current page
             // :TODO: DRS prompt
+          $newTypo3Links[ ] = $typo3link . PHP_EOL;
           continue 2;
           break;
         case( empty( $anchor ) ):
             // CONTINUE : Link isn't a link to a content element within the current page
             // :TODO: DRS prompt
+          $newTypo3Links[ ] = $typo3link . PHP_EOL;
           continue 2;
           break;
       }
-      $anchor         = '#c' . trim( $anchor );
-      $anchors[$key]  = $anchor; 
+      $newTypo3Links[ ] = PHP_EOL;
+      $anchor           = '#c' . trim( $anchor );
+      $anchors[$key]    = $anchor; 
       unset( $pid );
     }
+    
+    $this->cObj->data['image_link'] = implode( null, $newTypo3Links );
+
     
     $csvAnchors = implode( ', ', $anchors );
     
@@ -172,16 +180,6 @@ $(document).ready(function() {
     });
 });
 ";
-//  $('#c2852 img, #c2852 .csc-textpic-caption').wrap('<a class="c2581" data-fancybox-group="c2581" title="Wildt" href="#c2849">');
-//  $(document).ready(function() {
-//    $('a.c2581').fancybox({
-//      'overlayOpacity' : '0.2',
-//      'speedIn'    : '1000',
-//      'speedOut'   : '200',    
-//      'transitionIn'    : 'elastic',
-//      'transitionOut'   : 'elastic'    
-//    });
-//  });
 
     $jss = $jss . $fancybox;
 
