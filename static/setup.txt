@@ -4,7 +4,6 @@ plugin.tx_t3fancybox_pi1 {
   content {
     10 < lib.stdheader
     10 {
-        // IF field:tx_flipit_fancybox is not in list of ',enabled,disabled,ts'
       if = 
       if {
         value = 0,2,3
@@ -16,7 +15,6 @@ plugin.tx_t3fancybox_pi1 {
     20 < tt_content.image.20
     30 < lib.stdheader
     30 {
-        // IF field:tx_flipit_fancybox is not in list of ',enabled,disabled,ts'
       if = 
       if {
         value = 1
