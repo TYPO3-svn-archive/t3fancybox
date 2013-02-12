@@ -2,9 +2,9 @@
 plugin.tx_t3fancybox_pi1 {
   content = COA
   content {
-    10 < tt_content.image.10
+    10 < lib.stdheader
     20 < tt_content.image.20
-    30 < tt_content.image.10    
+    30 < lib.stdheader
   } 
 }
 
