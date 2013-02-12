@@ -21,6 +21,8 @@
   t3lib_div::loadTCA( 'tt_content' );
 //$TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] = $TCA['tt_content']['types']['image']['showitem'];
 $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] = $TCA['tt_content']['types']['textpic']['showitem'];
+unset( $TCA['tt_content']['columns']['imageheight']['config']['eval'] );
+unset( $TCA['tt_content']['columns']['imagewidth']['config']['eval'] );
 
 t3lib_extMgm::addPlugin( 
   array (
