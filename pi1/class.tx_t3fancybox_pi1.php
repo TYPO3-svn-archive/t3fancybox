@@ -97,7 +97,6 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     }
       // RETURN : There isn't any link
 
-    $files      = explode( ',', $this->cObj->data['image'] );
     $typo3links = explode( PHP_EOL, $this->cObj->data['image_link'] );
     $captions   = explode( PHP_EOL, $this->cObj->data['imagecaption'] );
     
@@ -133,31 +132,38 @@ class tx_t3fancybox_pi1 extends tslib_pibase
     $jss = $jss . '$("' . $csvAnchors . '").wrap(\'<div style="display:none;" />\');' . PHP_EOL;
     
     $uid      = $this->cObj->data['uid'];
-    $wraps    = null;
+    $jssHref  = null;
+    $jssTitle = null;
+
     
     foreach( ( array ) $anchors as $key => $anchor )
     {
-      $file     = trim( $files[$key] );
-      $title = null;
       if( $captions[$key] )
       {
-        $title = 'title="' . trim( $captions[$key] ) . '"';
+        $jssTitle[] = 'title[' . $key . ']="' . trim( $captions[$key] ) . '";';
       }
-      $selector = '$("#c' . $uid . ' img[src$=\'' . $file . '\']")';
-      $wraps[] = $selector . ".attr('id', 'c" . $uid . "-img-" . ( $key + 1 ) . "');";
-      $selector = '$("#c' . $uid . '-img-' . ( $key + 1 ) . '")';
-      $wraps[] = $selector . '.parent( ).wrap(\'<a class="c' . $uid . '" data-fancybox-group="c' . $uid . '" ' . $title . ' href="' . $anchor . '">\');';
+      $jssHref[] = 'href[' . $key . ']="' . trim( $anchor ) . '";';
     }
     
-//    $wrap = implode( ';' . PHP_EOL . $selector . '.', ( array ) $wraps );
-//    $wrap = $selector . '.' . $wrap. ';' . PHP_EOL;
-    $wrap = implode( PHP_EOL, ( array ) $wraps );
-    $wrap = $wrap. PHP_EOL;
+    $jssHrefArr = implode( PHP_EOL, ( array ) $jssHref );
+    $jssHrefArr = 'href = new Array( );' . PHP_EOL . $jssHref;
+    $jssTitleArr = implode( PHP_EOL, ( array ) $jssTitle );
+    $jssTitleArr = 'title = new Array( );' . PHP_EOL . $jssTitle;
     
-    $jss = $jss . $wrap;
-
     $fancybox = "
 $(document).ready(function() {
+" . $jssHrefArr . "
+" . $jssTitleArr . "
+    $('#c" . $uid . " figure').each(
+      function( i ) {
+        var inc = i + 1;
+        if( ! href[inc] )
+        {
+          return;
+        }
+        $(this).wrap('<a class=\"c" . $uid . "\" data-fancybox-group=\"c" . $uid . "\"' + title[inc] + '\" href=\"' + href[inc] + '\">');
+      }
+    );
     $('a.c" . $uid . "').fancybox({
       'overlayOpacity' : '0.2',
       'speedIn'    : '1000',
