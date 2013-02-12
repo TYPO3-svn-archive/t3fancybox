@@ -12,7 +12,8 @@ plugin.tx_t3fancybox_pi1 {
         }
       }
     }
-    20 < tt_content.image.20
+//    20 < tt_content.image.20
+    20 < tt_content.textpic.20
     30 < lib.stdheader
     30 {
       if = 
