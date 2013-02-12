@@ -160,7 +160,7 @@ $(document).ready(function() {
         {
           return;
         }
-        $(this).wrap('<a class=\"c" . $uid . "\" data-fancybox-group=\"c" . $uid . "\"' + title[i] + '\" href=\"' + href[i] + '\">');
+        $(this).wrap('<a class=\"c" . $uid . "\" data-fancybox-group=\"c" . $uid . "\"' + title[i] + ' href=\"' + href[i] + '\">');
       }
     );
     $('a.c" . $uid . "').fancybox({
