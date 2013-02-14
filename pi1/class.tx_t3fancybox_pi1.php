@@ -172,9 +172,10 @@ $(document).ready(function() {
       }
     );
     $('a.c" . $uid . "').fancybox({
-      'overlayOpacity' : '0.2',
-      'speedIn'    : '1000',
-      'speedOut'   : '200',    
+      'overlayOpacity'  : '0.2',
+      'speedIn'         : '1000',
+      'speedOut'        : '200',    
+      'titleShow'       : 'false',
       'transitionIn'    : 'elastic',
       'transitionOut'   : 'elastic'
     });
