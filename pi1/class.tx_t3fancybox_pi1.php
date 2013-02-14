@@ -175,7 +175,7 @@ $(document).ready(function() {
       'overlayOpacity'  : '0.2',
       'speedIn'         : '1000',
       'speedOut'        : '200',    
-      'titleShow'       : 'false',
+      'titleShow'       : false,
       'transitionIn'    : 'elastic',
       'transitionOut'   : 'elastic'
     });
